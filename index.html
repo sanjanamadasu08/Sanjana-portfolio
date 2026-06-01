@@ -810,55 +810,6 @@ filterBtns.forEach(btn => {
   });
 });
 
-/* ===== RESUME DOWNLOAD ===== */
-document.getElementById('downloadResume').addEventListener('click', function(e) {
-  e.preventDefault();
-  // Creates a simple text-based resume for download
-  const resumeText = `SANJANA MADASU
-Data Analyst | SQL · Python · Power BI · Excel
-sanjanamadasu804@gmail.com | +91-9535893259 | Bengaluru, India
-
-PROFILE SUMMARY
-Final-year B.Tech student (graduating May 2026) with proven experience in data analysis,
-business intelligence, and product analytics. Skilled in translating complex datasets into
-actionable insights for cross-functional stakeholders.
-
-INTERNSHIP
-Data & Reporting Analyst Intern – Alliance University – Admissions Dept.  Apr 2025 – Apr 2026
-• Automated the weekly KPI reporting pipeline.
-• Analysed 100+ monthly leads across 4 acquisition channels.
-• Designed and maintained 4+ weekly Power BI dashboards.
-• Conducted A/B analysis on 2 outreach strategies.
-• Cleaned and validated CRM records.
-
-PROJECTS
-• Rezumii – AI-Powered Resume & LinkedIn Analyzer (2026) – 100+ users
-• Consumer Perception & Purchase Behavior Analysis (2026) – 65% uplift
-• AI-Based Travel Recommendation Analytics System (2025) – 93% satisfaction
-• Breast Cancer Prediction – Classification Analytics (2025) – 90% accuracy
-
-EDUCATION
-B.Tech in Computer Science & Engineering (Data Analytics)
-Alliance University, Bengaluru · 2022-2026 · CGPA: 8.5/10
-
-CERTIFICATIONS
-• Google Data Analytics Professional Certificate (2026)
-• Oracle Analytics Cloud – Certified Professional (2025)
-• IBM – Introduction to Big Data with Spark and Hadoop (2025)
-• Tata Group – Data Visualization for Business Insights (2025)
-• University of Colorado – Data Mining Methods (2024)
-• IBM – Business Intelligence Essentials (2024)
-
-TECHNICAL SKILLS
-SQL, Python, R, NoSQL, PostgreSQL, Power BI, Tableau, Looker Studio,
-Excel, Pandas, NumPy, Scikit-learn, TensorFlow, Hadoop, Apache Spark`;
-
-  const blob = new Blob([resumeText], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'Sanjana_Madasu_Resume.txt';
-  a.click(); URL.revokeObjectURL(url);
-});
 
 /* ===== SCROLL ANIMATIONS ===== */
 const obs = new IntersectionObserver(entries => {
