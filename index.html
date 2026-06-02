@@ -227,17 +227,7 @@ section { padding:6.5rem 2rem; position:relative; z-index:1; }
 }
 .tag:hover { background:rgba(168,85,247,0.22); transform:translateY(-1px); }
 
-/* Skill proficiency bars */
-.skill-bars { margin-top:1.1rem; display:flex; flex-direction:column; gap:0.65rem; }
-.bar-row { display:flex; flex-direction:column; gap:0.25rem; }
-.bar-label { display:flex; justify-content:space-between; font-size:0.76rem; color:var(--text3); }
-.bar-track { height:5px; background:rgba(168,85,247,0.12); border-radius:100px; overflow:hidden; }
-.bar-fill {
-  height:100%; border-radius:100px;
-  background:linear-gradient(90deg,var(--accent3),var(--accent));
-  width:0%; transition:width 1.2s cubic-bezier(0.4,0,0.2,1);
-}
-.bar-fill.animated { width:var(--pct); }
+
 
 /* ============ EXPERIENCE ============ */
 .exp-card {
@@ -317,6 +307,32 @@ section { padding:6.5rem 2rem; position:relative; z-index:1; }
   font-size:0.86rem; text-decoration:none; margin-top:1rem; font-weight:500; transition:gap 0.2s;
 }
 .proj-link:hover { gap:0.65rem; }
+
+/* Project image */
+.proj-img {
+  width:100%; height:185px; object-fit:cover; object-position:top;
+  border-radius:12px; margin-bottom:1.25rem;
+  border:1px solid var(--border);
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
+}
+.proj-card:hover .proj-img { transform:scale(1.02); box-shadow:0 8px 30px var(--glow2); }
+.proj-img-placeholder {
+  width:100%; height:185px; border-radius:12px; margin-bottom:1.25rem;
+  background:linear-gradient(135deg,var(--bg3) 0%,var(--card2) 100%);
+  border:1px dashed var(--border2);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:0.5rem; color:var(--text3); font-size:0.8rem;
+}
+.proj-img-placeholder span { font-size:2rem; }
+
+/* Cert link */
+.cert-link {
+  display:inline-flex; align-items:center; gap:0.35rem;
+  color:var(--accent); font-size:0.76rem; text-decoration:none;
+  margin-top:0.3rem; font-weight:500; opacity:0.85;
+  transition:opacity 0.2s,gap 0.2s;
+}
+.cert-link:hover { opacity:1; gap:0.5rem; }
 
 /* ============ EDUCATION & CERTS ============ */
 .edu-cert-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
@@ -510,10 +526,6 @@ footer {
         <div class="tags">
           <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">NoSQL</span><span class="tag">PostgreSQL</span>
         </div>
-        <div class="skill-bars">
-          <div class="bar-row"><div class="bar-label"><span>SQL</span><span>95%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:95%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Python</span><span>88%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:88%"></div></div></div>
-        </div>
       </div>
 
       <div class="skill-card fade-up d2">
@@ -521,9 +533,6 @@ footer {
         <h3>Data &amp; Business Analysis</h3>
         <div class="tags">
           <span class="tag">EDA</span><span class="tag">A/B Testing</span><span class="tag">Cohort Analysis</span><span class="tag">Funnel Analysis</span><span class="tag">Statistical Analysis</span><span class="tag">Segmentation</span>
-        </div>
-        <div class="skill-bars">
-          <div class="bar-row"><div class="bar-label"><span>EDA / A/B Testing</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:90%"></div></div></div>
         </div>
       </div>
 
@@ -533,10 +542,6 @@ footer {
         <div class="tags">
           <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Looker Studio</span><span class="tag">Excel</span><span class="tag">Google Sheets</span>
         </div>
-        <div class="skill-bars">
-          <div class="bar-row"><div class="bar-label"><span>Power BI</span><span>92%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:92%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Excel</span><span>85%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:85%"></div></div></div>
-        </div>
       </div>
 
       <div class="skill-card fade-up d1">
@@ -544,9 +549,6 @@ footer {
         <h3>ML &amp; NLP</h3>
         <div class="tags">
           <span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">Classification</span><span class="tag">Sentiment Analysis</span><span class="tag">NLP</span><span class="tag">Predictive Modeling</span>
-        </div>
-        <div class="skill-bars">
-          <div class="bar-row"><div class="bar-label"><span>ML / Scikit-learn</span><span>82%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:82%"></div></div></div>
         </div>
       </div>
 
@@ -556,9 +558,6 @@ footer {
         <div class="tags">
           <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">ETL Pipelines</span><span class="tag">Feature Engineering</span><span class="tag">Data Modelling</span><span class="tag">Data Cleaning</span>
         </div>
-        <div class="skill-bars">
-          <div class="bar-row"><div class="bar-label"><span>Pandas / NumPy</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:90%"></div></div></div>
-        </div>
       </div>
 
       <div class="skill-card fade-up d3">
@@ -566,9 +565,6 @@ footer {
         <h3>Big Data &amp; Product Analytics</h3>
         <div class="tags">
           <span class="tag">Hadoop</span><span class="tag">Apache Spark</span><span class="tag">Kafka</span><span class="tag">KPI Definition</span><span class="tag">User Behavior Analysis</span>
-        </div>
-        <div class="skill-bars">
-          <div class="bar-row"><div class="bar-label"><span>Big Data (Foundational)</span><span>65%</span></div><div class="bar-track"><div class="bar-fill" style="--pct:65%"></div></div></div>
         </div>
       </div>
 
@@ -614,6 +610,8 @@ footer {
     <div class="projects-grid">
 
       <div class="proj-card featured fade-up" data-category="nlp analytics">
+        <img src="rezumii-preview.png" alt="Rezumii project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="proj-img-placeholder" style="display:none"><span>🤗</span>Add rezumii-preview.png</div>
         <div class="proj-badge">✦ Live Product · 100+ Real Users</div>
         <h3 class="proj-title">Rezumii – AI Resume &amp; LinkedIn Analyzer</h3>
         <div class="proj-year">2026 · 30+ job role coverage</div>
@@ -625,6 +623,8 @@ footer {
       </div>
 
       <div class="proj-card fade-up d1" data-category="analytics ml">
+        <img src="consumer-preview.png" alt="Consumer Perception project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="proj-img-placeholder" style="display:none"><span>📊</span>Add consumer-preview.png</div>
         <div class="proj-badge">✦ 65% Purchase Probability Uplift</div>
         <h3 class="proj-title">Consumer Perception &amp; Purchase Behaviour Analysis</h3>
         <div class="proj-year">2026 · End-to-end consumer study</div>
@@ -635,6 +635,8 @@ footer {
       </div>
 
       <div class="proj-card fade-up d2" data-category="analytics nlp">
+        <img src="travel-preview.png" alt="Travel Recommendation project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="proj-img-placeholder" style="display:none"><span>✈️</span>Add travel-preview.png</div>
         <div class="proj-badge">✦ 93% User Satisfaction</div>
         <h3 class="proj-title">AI-Based Travel Recommendation Analytics System</h3>
         <div class="proj-year">2025 · Recommendation engine</div>
@@ -645,6 +647,8 @@ footer {
       </div>
 
       <div class="proj-card fade-up d3" data-category="ml">
+        <img src="cancer-preview.png" alt="Breast Cancer Prediction project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="proj-img-placeholder" style="display:none"><span>🔬</span>Add cancer-preview.png</div>
         <div class="proj-badge">✦ 90% Diagnostic Accuracy</div>
         <h3 class="proj-title">Breast Cancer Prediction – Classification Analytics</h3>
         <div class="proj-year">2025 · Supervised ML · Medical classification</div>
@@ -681,12 +685,12 @@ footer {
       <div class="fade-up d2">
         <h3 style="font-size:0.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.9rem;">Certifications</h3>
         <div class="certs-list">
-          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Google Data Analytics Professional Certificate</div><div class="cert-issuer">Google · 2026</div></div></div>
-          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Oracle Analytics Cloud – Certified Professional</div><div class="cert-issuer">Oracle · 2025</div></div></div>
-          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Introduction to Big Data with Spark and Hadoop</div><div class="cert-issuer">IBM · 2025</div></div></div>
-          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Data Visualization for Business Insights</div><div class="cert-issuer">Tata Group · 2025</div></div></div>
-          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Data Mining Methods</div><div class="cert-issuer">University of Colorado · 2024</div></div></div>
-          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Business Intelligence Essentials</div><div class="cert-issuer">IBM · 2024</div></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Google Data Analytics Professional Certificate</div><div class="cert-issuer">Google · 2026</div><a href="https://skillshop.credential.net/d03d3179-08f3-45f0-97bb-37e8d355e852#acc.FzUoX8kV" target="_blank" class="cert-link">View Certificate →</a></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Oracle Analytics Cloud – Certified Professional</div><div class="cert-issuer">Oracle · 2025</div><a href="https://drive.google.com/file/d/14v1YyUyTnaWqlZmNLJenXbijBmun1x-p/view?usp=drive_link" target="_blank" class="cert-link">View Certificate →</a></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Introduction to Big Data with Spark and Hadoop</div><div class="cert-issuer">IBM · 2025</div><a href="https://www.coursera.org/account/accomplishments/verify/H0DSANF5A9VV" target="_blank" class="cert-link">View Certificate →</a></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Data Visualization for Business Insights</div><div class="cert-issuer">Tata Group · 2025</div><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_q8puZwu2oLyxvYQK4_1744822147870_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate →</a></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Data Mining Methods</div><div class="cert-issuer">University of Colorado · 2024</div><a href="https://www.coursera.org/account/accomplishments/verify/99G4BWGQA49H" target="_blank" class="cert-link">View Certificate →</a></div></div>
+          <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Business Intelligence Essentials</div><div class="cert-issuer">IBM · 2024</div><a href="https://www.coursera.org/account/accomplishments/verify/BVSDF36ODOSH" target="_blank" class="cert-link">View Certificate →</a></div></div>
         </div>
       </div>
     </div>
@@ -822,16 +826,7 @@ const statsObs=new IntersectionObserver(entries=>{
 },{threshold:0.5});
 document.querySelector('.hero-stats') && statsObs.observe(document.querySelector('.hero-stats'));
 
-/* ===== SKILL BARS ===== */
-const barObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.bar-fill').forEach(b=>b.classList.add('animated'));
-      barObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.3});
-document.querySelectorAll('.skill-card').forEach(c=>barObs.observe(c));
+
 
 /* ===== PROJECT FILTER ===== */
 document.querySelectorAll('.filter-btn').forEach(btn=>{
