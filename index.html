@@ -134,8 +134,39 @@ nav {
 }
 @keyframes drift1 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(-30px,30px);} }
 @keyframes drift2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(30px,-20px);} }
-.hero-inner { max-width:1140px; margin:0 auto; width:100%; position:relative; z-index:1; }
+.hero-inner{
+    max-width:1140px;
+    margin:0 auto;
+    width:100%;
 
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+
+    position:relative;
+    z-index:1;
+}
+.hero-image{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:500px;
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+}
 /* Typing cursor */
 .typed-cursor { color:var(--accent); animation:blink-cursor 0.8s step-end infinite; }
 @keyframes blink-cursor { 0%,100%{opacity:1;} 50%{opacity:0;} }
@@ -483,15 +514,9 @@ footer {
   <div class="hero-orb1"></div>
   <div class="hero-orb2"></div>
 <div class="hero-inner">
+<div class="hero-content">
 
-  <div class="hero-content">
-    <!-- YOUR EXISTING LEFT SIDE CONTENT -->
-  </div>
-
-  <div class="hero-image">
-    <img src="assets/desk-setup.png" alt="Data Analyst Workspace">
-  </div>
-
+  
 </div>    <div class="status-pill"><span class="status-dot"></span>Open to Full-Time Roles · Bengaluru · Hyderabad</div>
     <h1>Sanjana<span class="line2">Madasu.</span></h1>
     <p class="hero-sub">
@@ -530,6 +555,10 @@ footer {
         <div class="stat-label">CGPA / 10</div>
         <div class="stat-tooltip">Alliance University · CSE Data Analytics</div>
       </div>
+</div>
+<div class="hero-image">
+    <img src="desk-setup.png" alt="Desk Setup">
+</div>
     </div>
   </div>
 </section>
@@ -903,7 +932,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting)e.target.classList.add('visible'); });
 },{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));	
 </script>
 </body>
 </html>
