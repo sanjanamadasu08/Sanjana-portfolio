@@ -147,6 +147,25 @@ nav {
     position:relative;
     z-index:1;
 }
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:60px;
+}
+
+.hero-image{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero-image img{
+  width:100%;
+  max-width:550px;
+  border-radius:24px;
+  filter:drop-shadow(0 0 40px rgba(192,132,252,.4));
+}
 .hero-image{
     display:flex;
     justify-content:center;
@@ -510,56 +529,54 @@ footer {
 </nav>
 
 <!-- HERO -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-orb1"></div>
   <div class="hero-orb2"></div>
-<div class="hero-inner">
-<div class="hero-content">
 
-  
-</div>    <div class="status-pill"><span class="status-dot"></span>Open to Full-Time Roles · Bengaluru · Hyderabad</div>
-    <h1>Sanjana<span class="line2">Madasu.</span></h1>
-    <p class="hero-sub">
-      Data Analyst turning <strong>complex datasets</strong> into decisions that move the needle.<br/>
-      Skilled in <strong>SQL · Python · Power BI</strong> across BI, product analytics &amp; ML.
-    </p>
-    <div class="typewriter-line">
-      I specialise in <span id="typewriter"></span><span class="typed-cursor">|</span>
+  <div class="hero-inner hero-grid">
+
+    <!-- LEFT SIDE -->
+    <div class="hero-content">
+
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        Open to Full-Time Roles · Bengaluru · Hyderabad
+      </div>
+
+      <h1>
+        Sanjana
+        <span class="line2">Madasu.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Data Analyst turning <strong>complex datasets</strong> into decisions that move the needle.
+        <br>
+        Skilled in <strong>SQL · Python · Power BI</strong> across BI, product analytics & ML.
+      </p>
+
+      <div class="typewriter-line">
+        I specialise in
+        <span id="typewriter"></span>
+        <span class="typed-cursor">|</span>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+
+        <a href="Sanjana_Madasu_Resume.pdf" download class="btn-resume">
+          Download Resume
+        </a>
+      </div>
+
     </div>
-    <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
-      <a href="Sanjana_Madasu_Resume.pdf" download class="btn-resume">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
-        Download Resume
-      </a>
+
+    <!-- RIGHT SIDE IMAGE -->
+    <div class="hero-image">
+      <img src="assets/desk-setup.png" alt="Data Analyst Workspace">
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num" data-target="100">0</div>
-        <div class="stat-label">Live Product Users</div>
-        <div class="stat-tooltip">Rezumii on Hugging Face Spaces</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="93">0</div>
-        <div class="stat-label">% User Satisfaction</div>
-        <div class="stat-tooltip">Travel Recommendation System</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num" data-target="90">0</div>
-        <div class="stat-label">% ML Model Accuracy</div>
-        <div class="stat-tooltip">Cancer Prediction Classifier</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">8.5</div>
-        <div class="stat-label">CGPA / 10</div>
-        <div class="stat-tooltip">Alliance University · CSE Data Analytics</div>
-      </div>
-</div>
-<div class="hero-image">
-    <img src="desk-setup.png" alt="Desk Setup">
-</div>
-    </div>
+
   </div>
 </section>
 <!-- ABOUT ME -->
