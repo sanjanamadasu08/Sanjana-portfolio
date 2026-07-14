@@ -56,10 +56,11 @@ body {
 .cursor-ring.hovered { width:52px; height:52px; opacity:0.3; }
 a, button { cursor:none; }
 
-/* ============ NOISE TEXTURE ============ */
+/* ============ NOISE TEXTURE OVERLAY ============ */
 body::before {
-  content:''; position:fixed; inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events:none; z-index:0; opacity:0.5;
 }
 
@@ -83,10 +84,7 @@ nav {
   max-width:1140px; margin:0 auto;
   display:flex; align-items:center; justify-content:space-between; height:66px;
 }
-.nav-logo {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.55rem; font-weight:600; color:var(--accent); letter-spacing:0.03em;
-}
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:600; color:var(--accent); letter-spacing:0.03em; }
 .nav-links { display:flex; gap:2rem; list-style:none; }
 .nav-links a {
   color:var(--text2); text-decoration:none; font-size:0.85rem; font-weight:500;
@@ -135,7 +133,6 @@ nav {
 @keyframes drift2 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(30px,-20px);} }
 .hero-inner { max-width:1140px; margin:0 auto; width:100%; position:relative; z-index:1; }
 
-/* Typing cursor */
 .typed-cursor { color:var(--accent); animation:blink-cursor 0.8s step-end infinite; }
 @keyframes blink-cursor { 0%,100%{opacity:1;} 50%{opacity:0;} }
 
@@ -162,7 +159,6 @@ nav {
 }
 .hero-sub strong { color:var(--text); font-weight:500; }
 
-/* Typewriter area */
 .typewriter-line {
   font-size:1.05rem; color:var(--text3); margin-bottom:2.5rem;
   font-weight:400; min-height:1.8rem;
@@ -201,6 +197,14 @@ nav {
   font-size:2.75rem; font-weight:700; color:var(--accent); line-height:1;
 }
 .stat-label { font-size:0.8rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.3rem; }
+.stat-tooltip {
+  position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
+  background:var(--card2); border:1px solid var(--border2); border-radius:8px;
+  padding:0.4rem 0.8rem; font-size:0.75rem; color:var(--text2);
+  white-space:nowrap; opacity:0; pointer-events:none;
+  transition:opacity 0.2s; z-index:10;
+}
+.stat-item:hover .stat-tooltip { opacity:1; }
 
 /* ============ SECTIONS ============ */
 section { padding:6.5rem 2rem; position:relative; z-index:1; }
@@ -209,7 +213,7 @@ section { padding:6.5rem 2rem; position:relative; z-index:1; }
 .section-eyebrow { font-size:0.76rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--accent); font-weight:600; margin-bottom:0.6rem; }
 .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.1rem,4vw,3.2rem); font-weight:600; line-height:1.1; margin-bottom:3rem; }
 
-/* ============ SKILLS — animated bars ============ */
+/* ============ SKILLS ============ */
 .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:1.35rem; }
 .skill-card {
   background:var(--card); border:1px solid var(--border); border-radius:18px;
@@ -226,8 +230,6 @@ section { padding:6.5rem 2rem; position:relative; z-index:1; }
   transition:background 0.2s,transform 0.2s;
 }
 .tag:hover { background:rgba(168,85,247,0.22); transform:translateY(-1px); }
-
-
 
 /* ============ EXPERIENCE ============ */
 .exp-card {
@@ -308,24 +310,6 @@ section { padding:6.5rem 2rem; position:relative; z-index:1; }
 }
 .proj-link:hover { gap:0.65rem; }
 
-/* Project image */
-.proj-img {
-  width:100%; height:185px; object-fit:cover; object-position:top;
-  border-radius:12px; margin-bottom:1.25rem;
-  border:1px solid var(--border);
-  transition:transform 0.4s ease, box-shadow 0.4s ease;
-}
-.proj-card:hover .proj-img { transform:scale(1.02); box-shadow:0 8px 30px var(--glow2); }
-.proj-img-placeholder {
-  width:100%; height:185px; border-radius:12px; margin-bottom:1.25rem;
-  background:linear-gradient(135deg,var(--bg3) 0%,var(--card2) 100%);
-  border:1px dashed var(--border2);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:0.5rem; color:var(--text3); font-size:0.8rem;
-}
-.proj-img-placeholder span { font-size:2rem; }
-
-/* Cert link */
 .cert-link {
   display:inline-flex; align-items:center; gap:0.35rem;
   color:var(--accent); font-size:0.76rem; text-decoration:none;
@@ -403,17 +387,6 @@ section { padding:6.5rem 2rem; position:relative; z-index:1; }
 #backToTop.visible { opacity:1; pointer-events:all; }
 #backToTop:hover { transform:translateY(-3px); }
 
-/* ============ TOOLTIP (for stat hover) ============ */
-.stat-item { position:relative; }
-.stat-tooltip {
-  position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
-  background:var(--card2); border:1px solid var(--border2); border-radius:8px;
-  padding:0.4rem 0.8rem; font-size:0.75rem; color:var(--text2);
-  white-space:nowrap; opacity:0; pointer-events:none;
-  transition:opacity 0.2s; z-index:10;
-}
-.stat-item:hover .stat-tooltip { opacity:1; }
-
 /* ============ FOOTER ============ */
 footer {
   padding:2rem; text-align:center; color:var(--text3); font-size:0.84rem;
@@ -483,7 +456,7 @@ footer {
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Projects</a>
       <a href="#contact" class="btn-outline">Get in Touch</a>
-      <a href="https://raw.githubusercontent.com/sanjanamadasu08/sanjana-portfolio/main/Sanjana_Madasu_Resume.pdf" download="Sanjana_Madasu_Resume.pdf" class="btn-resume">
+      <a href="https://raw.githubusercontent.com/sanjanamadasu08/Sanjana-portfolio/main/Sanjana_Madasu_Resume.pdf" download="Sanjana_Madasu_Resume.pdf" class="btn-resume">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
         Download Resume
       </a>
@@ -601,17 +574,18 @@ footer {
   <div class="section-inner">
     <p class="section-eyebrow fade-up">Portfolio</p>
     <h2 class="section-title fade-up">Projects</h2>
+
+    <!-- Filter Bar -->
     <div class="filter-bar fade-up">
       <button class="filter-btn active" data-filter="all">All Projects</button>
       <button class="filter-btn" data-filter="nlp">NLP &amp; AI</button>
       <button class="filter-btn" data-filter="analytics">Analytics &amp; BI</button>
       <button class="filter-btn" data-filter="ml">Machine Learning</button>
     </div>
+
     <div class="projects-grid">
 
       <div class="proj-card featured fade-up" data-category="nlp analytics">
-        <img src="rezumii-preview.png" alt="Rezumii project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="proj-img-placeholder" style="display:none"><span>🤗</span>Add rezumii-preview.png</div>
         <div class="proj-badge">✦ Live Product · 100+ Real Users</div>
         <h3 class="proj-title">Rezumii – AI Resume &amp; LinkedIn Analyzer</h3>
         <div class="proj-year">2026 · 30+ job role coverage</div>
@@ -623,8 +597,6 @@ footer {
       </div>
 
       <div class="proj-card fade-up d1" data-category="analytics ml">
-        <img src="consumer-preview.png" alt="Consumer Perception project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="proj-img-placeholder" style="display:none"><span>📊</span>Add consumer-preview.png</div>
         <div class="proj-badge">✦ 65% Purchase Probability Uplift</div>
         <h3 class="proj-title">Consumer Perception &amp; Purchase Behaviour Analysis</h3>
         <div class="proj-year">2026 · End-to-end consumer study</div>
@@ -635,8 +607,6 @@ footer {
       </div>
 
       <div class="proj-card fade-up d2" data-category="analytics nlp">
-        <img src="travel-preview.png" alt="Travel Recommendation project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="proj-img-placeholder" style="display:none"><span>✈️</span>Add travel-preview.png</div>
         <div class="proj-badge">✦ 93% User Satisfaction</div>
         <h3 class="proj-title">AI-Based Travel Recommendation Analytics System</h3>
         <div class="proj-year">2025 · Recommendation engine</div>
@@ -647,8 +617,6 @@ footer {
       </div>
 
       <div class="proj-card fade-up d3" data-category="ml">
-        <img src="cancer-preview.png" alt="Breast Cancer Prediction project screenshot" class="proj-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="proj-img-placeholder" style="display:none"><span>🔬</span>Add cancer-preview.png</div>
         <div class="proj-badge">✦ 90% Diagnostic Accuracy</div>
         <h3 class="proj-title">Breast Cancer Prediction – Classification Analytics</h3>
         <div class="proj-year">2025 · Supervised ML · Medical classification</div>
@@ -675,7 +643,7 @@ footer {
           <div class="edu-meta">Specialisation: Data Analytics · 2022–2026</div>
           <div class="cgpa">CGPA: 8.5 / 10</div>
         </div>
-        <h3 style="font-size:0.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.9rem;">Key Achievements</h3>
+        <h3 style="font-size:0.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.9rem;">Key Achievements</h3>
         <div class="certs-list">
           <div class="cert-item"><div class="cert-dot" style="background:var(--accent)"></div><div><div class="cert-name">Presented Power BI dashboards to 50+ stakeholders across 3 departments — directly influenced pricing &amp; strategy</div></div></div>
           <div class="cert-item"><div class="cert-dot" style="background:var(--accent)"></div><div><div class="cert-name">Hosted &amp; emceed multiple academic and cultural events — strong public speaking and audience engagement</div></div></div>
@@ -683,7 +651,7 @@ footer {
         </div>
       </div>
       <div class="fade-up d2">
-        <h3 style="font-size:0.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.9rem;">Certifications</h3>
+        <h3 style="font-size:0.75rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.9rem;">Certifications</h3>
         <div class="certs-list">
           <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Google Data Analytics Professional Certificate</div><div class="cert-issuer">Google · 2026</div><a href="https://skillshop.credential.net/d03d3179-08f3-45f0-97bb-37e8d355e852#acc.FzUoX8kV" target="_blank" class="cert-link">View Certificate →</a></div></div>
           <div class="cert-item"><div class="cert-dot"></div><div><div class="cert-name">Oracle Analytics Cloud – Certified Professional</div><div class="cert-issuer">Oracle · 2025</div><a href="https://drive.google.com/file/d/14v1YyUyTnaWqlZmNLJenXbijBmun1x-p/view?usp=drive_link" target="_blank" class="cert-link">View Certificate →</a></div></div>
@@ -804,29 +772,6 @@ function type(){
   setTimeout(type,deleting?40:65);
 }
 type();
-
-/* ===== COUNT-UP ANIMATION ===== */
-function countUp(el,target){
-  let current=0;
-  const step=Math.ceil(target/60);
-  const timer=setInterval(()=>{
-    current=Math.min(current+step,target);
-    el.textContent=current+(target>=90?'%':'+');
-    if(current>=target)clearInterval(timer);
-  },25);
-}
-const statsObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const nums=e.target.querySelectorAll('.stat-num[data-target]');
-      nums.forEach(n=>countUp(n,parseInt(n.dataset.target)));
-      statsObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.5});
-document.querySelector('.hero-stats') && statsObs.observe(document.querySelector('.hero-stats'));
-
-
 
 /* ===== PROJECT FILTER ===== */
 document.querySelectorAll('.filter-btn').forEach(btn=>{
